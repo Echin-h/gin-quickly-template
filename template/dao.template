@@ -1,0 +1,25 @@
+package dao
+
+import (
+	"github.com/redis/go-redis/v9"
+	"gorm.io/gorm"
+)
+
+var (
+	{{.AppName}}Orm   = &{{.appName}}Orm{}
+	{{.AppName}}Cache = &{{.appName}}Cache{}
+)
+
+func Init(db *gorm.DB, rds *redis.Client) error {
+	err := {{.AppName}}Orm.InitPG(db)
+	if err != nil {
+		return err
+	}
+
+	err = {{.AppName}}Cache.InitCache(rds)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}

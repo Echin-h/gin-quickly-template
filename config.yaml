@@ -1,0 +1,36 @@
+Mode: debug
+AppName: "AppName"
+Author: "echin"
+Version: "v1.0.0"
+Host: "127.0.0.1"
+Port: "8080"
+Log:
+  LogPath: "./"
+  CLS:
+    Endpoint: ""
+    AccessKey: ""
+    AccessToken: ""
+    TopicID: ""
+Database:
+  mode: "debug"
+  Mysql:
+    Host: "127.0.0.1"
+    Port: "3306"
+    Username: "username"
+    Password: "password"
+    DBName: "mysql"
+    Charset: "utf8mb4"
+    ParseTime: "True"
+    Loc: "Local"
+  Postgres:
+    Host: "127.0.0.1"
+    Port: "5432"
+    Password: "password"
+    Username: "username"
+    DBName: "postgres"
+    SSLMode: "disable"
+    TimeZone: "Asia/Shanghai"
+  Redis:
+    Addr: "127.0.0.1:6379"
+    Password: ""
+    DB: 0

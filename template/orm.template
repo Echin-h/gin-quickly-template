@@ -1,0 +1,32 @@
+package dao
+
+import (
+	"context"
+	"gin-quickly-template/internal/app/{{.appName}}/model"
+	"gorm.io/gorm"
+)
+
+type {{.appName}}Orm struct {
+	*gorm.DB
+}
+
+func (u *{{.appName}}Orm) InitPG(db *gorm.DB) error {
+	u.DB = db
+	return db.AutoMigrate(&model.{{.AppName}}{})
+}
+
+func (u *{{.appName}}Orm) Create{{.AppName}}(ping model.{{.AppName}}) error {
+	return u.DB.WithContext(context.Background()).Create(&ping).Error
+}
+
+func (u *{{.appName}}Orm) Get{{.AppName}}List() ([]model.{{.AppName}}, error) {
+	var {{.appName}}s []model.{{.AppName}}
+	err := u.DB.WithContext(context.Background()).Find(&{{.appName}}s).Error
+	return {{.appName}}s, err
+}
+
+func (u *{{.appName}}Orm) Get{{.AppName}}ByID(id int) (model.{{.AppName}}, error) {
+	var pin model.{{.AppName}}
+	err := u.DB.WithContext(context.Background()).First(&pin, id).Error
+	return pin, err
+}

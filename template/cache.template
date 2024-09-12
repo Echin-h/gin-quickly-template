@@ -1,0 +1,36 @@
+package dao
+
+import (
+	"context"
+	"github.com/redis/go-redis/v9"
+)
+
+type {{.appName}}Cache struct {
+	*redis.Client
+}
+
+func (u *{{.appName}}Cache) InitCache(rds *redis.Client) error {
+	u.Client = rds
+	return u.Ping()
+}
+
+func (u *{{.appName}}Cache) Ping() error {
+	_, err := u.Client.Ping(context.Background()).Result()
+	return err
+}
+
+func (u *{{.appName}}Cache) Set(key string, value interface{}, expiration int64) error {
+	return u.Client.Set(context.Background(), key, value, 0).Err()
+}
+
+func (u *{{.appName}}Cache) Get(key string) (string, error) {
+	return u.Client.Get(context.Background(), key).Result()
+}
+
+func (u *{{.appName}}Cache) Del(key string) error {
+	return u.Client.Del(context.Background(), key).Err()
+}
+
+func (u *{{.appName}}Cache) Exists(key string) (int64, error) {
+	return u.Client.Exists(context.Background(), key).Result()
+}

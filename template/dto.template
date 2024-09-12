@@ -1,0 +1,6 @@
+package dto
+
+type {{.AppName}}Response struct {
+	ID      int    `json:"id"`
+	Message string `json:"message"`
+}
