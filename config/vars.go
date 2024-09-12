@@ -43,10 +43,10 @@ type GlobalConfig struct {
 			DB       int    `yaml:"DB"`
 		} `yaml:"Redis"`
 	} `yaml:"Database"`
-	//Auth    struct {
-	//	Secret string `yaml:"Secret"`
-	//	Issuer string `yaml:"Issuer"`
-	//} `yaml:"Auth"`
+	Auth struct {
+		Secret string `yaml:"Secret"`
+		Issuer string `yaml:"Issuer"`
+	} `yaml:"Auth"`
 	//Databases []Datasource `yaml:"Databases"`
 	//Caches    []Cache      `yaml:"Caches"`
 	//OSS       Oss          `yaml:"Oss"`

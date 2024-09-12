@@ -13,7 +13,7 @@ func NameSpace(name string) *zap.SugaredLogger { return zap.S().Named(name) }
 
 func getLogWriter() zapcore.WriteSyncer {
 	if config.GetConfig().Log.LogPath == "" {
-		log.Fatalln("LogPath 未设置")
+		log.Fatalln("LogPath isn't set")
 	}
 	lj := &lumberjackV2.Logger{
 		Filename:   config.GetConfig().Log.LogPath,

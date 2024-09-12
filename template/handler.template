@@ -5,7 +5,5 @@ import (
 )
 
 func Get{{.AppName}}(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"message": "pong",
-	})
+	response.Success(c, "pong")
 }
