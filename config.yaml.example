@@ -1,0 +1,48 @@
+Mode: debug
+AppName: ""
+Author: ""
+Version: ""
+Host: ""
+Port: ""
+Log:
+    LogPath: ""
+    CLS:
+        Endpoint: ""
+        AccessKey: ""
+        AccessToken: ""
+        TopicID: ""
+Database:
+    mode: ""
+    Mysql:
+        Host: ""
+        Port: ""
+        Username: ""
+        Password: ""
+        DBName: ""
+        Charset: ""
+        ParseTime: ""
+        Loc: ""
+    Postgres:
+        Host: ""
+        Port: ""
+        Username: ""
+        Password: ""
+        DBName: ""
+        SSLMode: ""
+        TimeZone: ""
+    Redis:
+        Addr: ""
+        Password: ""
+        DB: 0
+Auth:
+    Secret: ""
+    Issuer: ""
+Sentry:
+    Enable: false
+    Dsn: ""
+otel:
+    Enable: false
+    ServiceName: ""
+    Endpoint: ""
+    AgentHost: ""
+    AgentPort: ""
