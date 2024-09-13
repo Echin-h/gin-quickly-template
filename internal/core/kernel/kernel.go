@@ -9,12 +9,6 @@ import (
 	"sync"
 )
 
-const (
-	MYSQL = "mysql"
-	REDIS = "redis"
-	PGSQL = "pgsql"
-)
-
 type Engine struct {
 	Gin *gin.Engine
 

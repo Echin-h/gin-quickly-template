@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"gin-quickly-template/internal/core/middleware/response"
 	"github.com/gin-gonic/gin"
 )
 

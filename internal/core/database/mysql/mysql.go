@@ -33,6 +33,11 @@ func InitMysql() *gorm.DB {
 		return nil
 	}
 
+	//if config.GetConfig().OTel.Enable {
+	//	err = db.Use(otelgorm.NewPlugin())
+	//	errorx.PanicOnErr(err)
+	//}
+
 	fmt.Println(colorful.Green("mysql connect success"))
 
 	return db

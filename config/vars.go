@@ -47,9 +47,17 @@ type GlobalConfig struct {
 		Secret string `yaml:"Secret"`
 		Issuer string `yaml:"Issuer"`
 	} `yaml:"Auth"`
-	//Databases []Datasource `yaml:"Databases"`
-	//Caches    []Cache      `yaml:"Caches"`
+	Sentry struct {
+		Enable bool   `yaml:"Enable"`
+		Dsn    string `yaml:"Dsn"`
+	} `yaml:"Sentry"`
+	OTel struct {
+		Enable      bool   `yaml:"Enable"`
+		ServiceName string `yaml:"ServiceName"`
+		Endpoint    string `yaml:"Endpoint"`
+		AgentHost   string `yaml:"AgentHost"`
+		AgentPort   string `yaml:"AgentPort"`
+	}
 	//OSS       Oss          `yaml:"Oss"`
 	//Mail      Mail         `yaml:"Mail"`
-	//CMS       Cms          `yaml:"Cms"`
 }

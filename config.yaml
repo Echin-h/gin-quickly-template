@@ -34,3 +34,9 @@ Database:
     Addr: "127.0.0.1:6379"
     Password: ""
     DB: 0
+Auth:
+  Secret: ""
+  Issuer: ""
+Sentry:
+  Enable: true
+  Dsn: "https://d81a2a726b95101b0d6d91e7e7c8ef7f@o4507943722942464.ingest.us.sentry.io/4507943725563904"

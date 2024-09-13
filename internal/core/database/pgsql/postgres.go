@@ -32,6 +32,11 @@ func InitPostgres() *gorm.DB {
 		return nil
 	}
 
+	//if config.GetConfig().OTel.Enable {
+	//	err = db.Use(otelgorm.NewPlugin())
+	//	errorx.PanicOnErr(err)
+	//}
+
 	fmt.Println(colorful.Green("postgres connect success"))
 	return db
 }

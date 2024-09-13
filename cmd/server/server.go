@@ -59,8 +59,25 @@ var (
 			}
 			k.Injector.Map(&rds)
 
+			// init sentry
+			//if config.GetConfig().Sentry.Enable {
+			//fmt.Println(colorful.Yellow("init sentry..."))
+			//sentryx.NewSentry()
+			//}
+
+			// init tracer
+			//if config.GetConfig().OTel.Enable {
+			//fmt.Println(colorful.Yellow("init tracer..."))
+			//tracex.Init()
+			//}
+
 			k.Gin = gin.New()
-			k.Gin.Use(gin.Recovery(), gin.Logger(), cors.Default()) // otel.GinMiddleware()
+			k.Gin.Use(gin.Recovery(),
+				gin.Logger(),
+				cors.Default(),
+				//sentryx.SentryMiddleware()
+				//tracer.Trace(),
+			)
 			k.Injector.Map(&k.Gin)
 
 			// !!!IMPORTANT: register module here
@@ -149,7 +166,7 @@ func setup() {
 
 	//fmt.Println(colorful.Yellow("SentryDsn init..."))
 	//if conf.Get().SentryDsn != "" {
-	//	sentry.Init()
+	//	sentryx.Init()
 	//}
 
 }
