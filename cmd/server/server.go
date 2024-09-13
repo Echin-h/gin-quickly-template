@@ -138,6 +138,10 @@ var (
 	}
 )
 
+func init() {
+	StartCmd.PersistentFlags().StringVarP(&configYml, "config", "c", "", "config file path")
+}
+
 func setup() {
 	// init config
 	fmt.Println(colorful.Yellow("init config..."))
@@ -164,13 +168,4 @@ func setup() {
 		gin.SetMode(gin.DebugMode)
 	}
 
-	//fmt.Println(colorful.Yellow("SentryDsn init..."))
-	//if conf.Get().SentryDsn != "" {
-	//	sentryx.Init()
-	//}
-
-}
-
-func init() {
-	StartCmd.PersistentFlags().StringVarP(&configYml, "config", "c", "", "config file path")
 }
