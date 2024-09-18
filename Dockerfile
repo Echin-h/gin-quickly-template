@@ -1,36 +1,26 @@
-# 使用官方 Golang 镜像作为构建环境
-FROM golang:1.21.3 as builder
+FROM golang:1.22 AS builder
 
-# 设置工作目录
-WORKDIR /app
+COPY . /build
 
-# 复制 go.mod 和 go.sum 文件
-COPY go.mod go.sum ./
+WORKDIR /build
 
-# 下载所有依赖
-RUN go env -w GOPROXY=https://goproxy.cn,direct
-RUN go mod download
-
-# 复制源代码
-COPY . .
-
-# 编译应用程序
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o myapp .
-
+RUN set -ex \
+    && GO111MODULE=auto CGO_ENABLED=0 go build -ldflags "-s -w -extldflags '-static' -X 'gin-quickly-template/pkg/ \
+    version.SysVersion=$(git show -s --format=%h)'" -o App
 
 FROM alpine:latest
 
-RUN apk --no-cache add ca-certificates
+WORKDIR /Serve
 
-# 将工作目录设置为 /
-WORKDIR /
+COPY --from=builder /build/App ./App
+# plz replace with true host
+COPY --from=builder /build/config.yaml ./config.yaml
 
-# 从构建器镜像中复制编译好的应用程序
-COPY --from=builder /app/myapp .
-COPY --from=builder /app/configs/config.yaml .
 
-# 暴露端口 8080
-EXPOSE 8080
+RUN apk update && apk add tzdata \
+    && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo "Asia/Shanghai" > /etc/timezone
 
-# 运行应用程序
-CMD ["./myapp"]
+
+ENTRYPOINT ["/Serve/App","server"]
+

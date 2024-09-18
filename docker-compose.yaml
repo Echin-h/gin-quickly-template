@@ -5,6 +5,18 @@ networks:
     driver: bridge
 
 services:
+  App:
+    image: gin-quickly-template
+    container_name: gin-quickly-template
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      Mode: debug
+    ports:
+      - "8080:8080"
+    networks:
+        - gin-quickly-template
   mysql:
     image: mysql:8.0
     container_name: mysql

@@ -1,5 +1,5 @@
 Mode: debug
-AppName: "AppName"
+AppName: "gin-quickly-template"
 Author: "echin"
 Version: "v1.0.0"
 Host: "127.0.0.1"
@@ -14,7 +14,7 @@ Log:
 Database:
   mode: "debug"
   Mysql:
-    Host: "127.0.0.1"
+    Host: "mysql"
     Port: "3306"
     Username: "username"
     Password: "password"
@@ -23,7 +23,7 @@ Database:
     ParseTime: "True"
     Loc: "Local"
   Postgres:
-    Host: "127.0.0.1"
+    Host: "postgres"
     Port: "5432"
     Password: "password"
     Username: "username"
@@ -31,7 +31,7 @@ Database:
     SSLMode: "disable"
     TimeZone: "Asia/Shanghai"
   Redis:
-    Addr: "127.0.0.1:6379"
+    Addr: "redis:6379"
     Password: ""
     DB: 0
 Auth:
