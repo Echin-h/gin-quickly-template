@@ -8,13 +8,15 @@ RUN set -ex \
     && GO111MODULE=auto CGO_ENABLED=0 go build -ldflags "-s -w -extldflags '-static' -X 'gin-quickly-template/pkg/ \
     version.SysVersion=$(git show -s --format=%h)'" -o App
 
-FROM alpine:latest
+FROM alpine:3.14.0
 
 WORKDIR /Serve
 
 COPY --from=builder /build/App ./App
 # plz replace with true host
-COPY --from=builder /build/config.yaml ./config.yaml
+
+# if you want to push to k3s, plz annotate it
+#COPY --from=builder /build/config.yaml ./config.yaml
 
 
 RUN apk update && apk add tzdata \

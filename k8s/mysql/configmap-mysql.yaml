@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-mysql
+  namespace: hduhelp
+data:
+  init.sql: |
+    CREATE USER 'username'@'%' IDENTIFIED BY 'password';
+    CREATE DATABASE IF NOT EXISTS mysql DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci;
+    GRANT ALL PRIVILEGES ON mysql.* TO 'username'@'%' WITH GRANT OPTION;

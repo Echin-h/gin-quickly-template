@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gin-quickly-template-config
+  namespace: hduhelp
+data:
+  config.yaml: |
+    AppMode: "debug"
+    AppName: "gin-quickly-template"
+    Author: "echin"
+    Version: "v1.0.0"
+    Host: "localhost"
+    Port: "8080"
+    Log:
+      LogPath: "./"
+      CLS:
+        Endpoint: ""
+        AccessKey: ""
+        AccessToken: ""
+        TopicID: ""
+    Database:
+      Mode: "debug"
+      Mysql:
+        Host: "mysql-service"
+        Port: "3306"
+        Username: "username"
+        Password: "password"
+        DBName: "mysql"
+        Charset: "utf8mb4"
+        ParseTime: "True"
+        Loc: "Local"
+      Postgres:
+        Host: "pgsql-service"
+        Port: "5432"
+        Username: "username"
+        Password: "password"
+        DBName: "postgres"
+        SSLMode: "disable"
+        TimeZone: "Asia/Shanghai"
+      Redis:
+        Addr: "redis-service:6379"
+        Password: ""
+        DB: 0
+    Auth:
+      Secret: ""
+      Issuer: ""
+    Sentry:
+      Enable: true
+      Dsn: ""
+    OTEL:
+      Enable: true
+      ServiceName: ""
+      Endpoint: ""
+      AgentHost: ""
+      AgentPort: ""

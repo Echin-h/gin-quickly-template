@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gin-quickly-template
+  namespace: hduhelp
+  labels:
+    app: gin-quickly-template
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gin-quickly-template
+  template:
+    metadata:
+      labels:
+        app: gin-quickly-template
+    spec:
+      containers:
+        - name: gin-quickly-template
+          image: ccstudyhyc/gin-quickly-template:latest
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: config
+              mountPath: /Serve/config
+      volumes:
+        - name: config
+          configMap:
+            name: gin-quickly-template-config
