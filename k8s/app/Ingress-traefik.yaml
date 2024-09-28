@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: www.lqgege.byerer.online
+  - host: dsn  # 这里要换成与你的ip绑定的域名
     http:
       paths:
       - path: /
