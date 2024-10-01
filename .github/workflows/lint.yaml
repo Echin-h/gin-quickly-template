@@ -31,7 +31,9 @@ jobs:
         run: go mod download
 
       - name: Install Node.js dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm install --save-dev eslint
 
       - name: Run lint
         run: npm run lint
