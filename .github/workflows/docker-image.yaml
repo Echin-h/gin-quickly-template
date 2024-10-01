@@ -37,9 +37,10 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           sleep 2s
-          curl -X POST http://121.40.219.170:9000/hooks/deploy -H "Content-Type: application/json" -d '{
+          curl -X POST http://localhost:9000/hooks/deploy -H "Content-Type: application/json" -d '{
           "NAMESPACE": "hduhelp",
           "DEPLOYMENT": "gin-quickly-template"
+          ""
           }'
 
           
