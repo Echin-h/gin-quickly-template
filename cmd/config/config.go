@@ -9,7 +9,8 @@ import (
 var (
 	configYml string
 	forceGen  bool
-	StartCmd  = &cobra.Command{
+	// StartCmd is the command to generate config file
+	StartCmd = &cobra.Command{
 		Use:     "config",
 		Short:   "Generate config file",
 		Example: "app config -p config/config.yaml.example -f",

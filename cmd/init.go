@@ -21,6 +21,7 @@ func init() {
 	rootCmd.AddCommand(create.StartCmd)
 }
 
+// Execute executes the root command.
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		os.Exit(-1)

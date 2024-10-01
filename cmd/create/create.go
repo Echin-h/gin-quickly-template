@@ -13,9 +13,10 @@ import (
 )
 
 var (
-	appName  string
-	dir      string
-	force    bool
+	appName string
+	dir     string
+	force   bool
+	// StartCmd is the command to create a new mod
 	StartCmd = &cobra.Command{
 		Use:     "create",
 		Short:   "create a new app",
