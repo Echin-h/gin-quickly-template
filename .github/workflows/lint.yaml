@@ -35,7 +35,9 @@ jobs:
           go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.59.0
 
       - name: Run lint
-        run: npm run lint
+        run: | 
+          npm install --save-dev eslint
+          npm run lint
 
       - name: Build Go Project
         run: make build
