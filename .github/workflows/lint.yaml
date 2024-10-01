@@ -1,4 +1,4 @@
-name: gin-quickly-template
+name: lint
 
 on:
   push:
