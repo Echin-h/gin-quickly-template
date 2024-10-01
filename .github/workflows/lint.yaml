@@ -38,5 +38,7 @@ jobs:
 
       - name: Build the application
         run: |
-          go mod tidy
+          go mod download
+          go mod verify
+          go mod tidy -v
           go build -v ./...
