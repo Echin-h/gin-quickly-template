@@ -9,35 +9,29 @@ on:
       - main
 
 jobs:
-    lint:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v4
-            with:
-              fetch-depth: 0
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-          - name: Setup Go
-            uses: actions/setup-go@v5
-            with:
-              go-version: 1.22
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.22
 
-          - name: Set up Node.js
-            uses: actions/setup-node@v4
-            with:
-                node-version: '20'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-          - name: Install dependencies
-            run: go mod download
+      - name: Set Run make lint-install
+        run: make lint-install
 
-          - name: Install Node.js dependencies
-            run: npm ci
+      - name: Run make lint
+        run: make lint
 
-          - name: Set up lint
-            run: make lint-install
-
-          - name: Run make lint
-            run: make lint
-
-          - name: Build Go Project
-            run: make build
+      - name: Build Go Project
+        run: make build
