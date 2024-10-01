@@ -27,17 +27,14 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: |
-          npm install conventional-changelog-conventionalcommits
-          npm install commitlint@latest
-          npm install -D @xyclos/commitlint-plugin-references
-          go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.59.0
+      - name: Install Go dependencies
+        run: go mod download
+
+      - name: Install Node.js dependencies
+        run: npm ci
 
       - name: Run lint
-        run: | 
-          npm install --save-dev eslint
-          npm run lint
+        run: npm run lint
 
       - name: Build Go Project
         run: make build
