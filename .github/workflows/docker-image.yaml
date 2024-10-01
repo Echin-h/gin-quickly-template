@@ -34,14 +34,17 @@ jobs:
             ccstudyhyc/gin-quickly-template:latest
             ccstudyhyc/gin-quickly-template:${{ github.sha }}
 
-      - name: Deploy to Kubernetes
-        run: |
-          sleep 2s
-          curl -X POST http://localhost:9000/hooks/deploy -H "Content-Type: application/json" -d '{
-          "NAMESPACE": "hduhelp",
-          "DEPLOYMENT": "gin-quickly-template"
-          ""
-          }'
+#      plz uncomment this block if you want to deploy to k8s
+#      and replace the NAMESPACE and DEPLOYMENT with your own
+#      and replace the host with your own
+#      - name: Deploy to Kubernetes
+#        run: |
+#          sleep 2s
+#          curl -X POST http://localhost:9000/hooks/deploy -H "Content-Type: application/json" -d '{
+#          "NAMESPACE": "hduhelp",
+#          "DEPLOYMENT": "gin-quickly-template"
+#          ""
+#          }'
 
           
 
