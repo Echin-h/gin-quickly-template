@@ -11,9 +11,9 @@ import (
 	"gin-quickly-template/internal/core/database/redis"
 	"gin-quickly-template/internal/core/kernel"
 	"gin-quickly-template/internal/core/logx"
+	"gin-quickly-template/internal/core/middleware/auth"
 	"gin-quickly-template/pkg/colorful"
 	"gin-quickly-template/pkg/ip"
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cobra"
 	"go.uber.org/zap/zapcore"
@@ -74,7 +74,7 @@ var (
 			k.Gin = gin.New()
 			k.Gin.Use(gin.Recovery(),
 				gin.Logger(),
-				cors.Default(),
+				auth.Cors(), //cors.Default(),
 				//sentryx.SentryMiddleware()
 				//tracer.Trace(),
 			)
